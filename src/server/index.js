@@ -6,7 +6,6 @@ const fileUrl = new URL('./telefonbuch.json', import.meta.url);
 const phoneBook = JSON.parse(await readFile(fileUrl, 'utf8'));
 
 const typeDefs = `#graphql
-
   type PhoneBook {
     name: String
     phone: String
@@ -15,12 +14,14 @@ const typeDefs = `#graphql
   type Query {
     contacts: [PhoneBook]
   }
-
 `;
+
+const contactResolver = () =>
+  [...phoneBook].sort((a, b) => a.name.localeCompare(b.name));
 
 const resolvers = {
   Query: {
-    contacts: () => phoneBook,
+    contacts: contactResolver,
   },
 };
 
