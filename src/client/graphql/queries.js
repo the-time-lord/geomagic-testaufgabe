@@ -1,10 +1,13 @@
 import { gql } from '@apollo/client';
 
 export const GET_CONTACTS = gql`
-  query GetContacts {
-    contacts {
-      name
-      phone
+  query GetContacts($name: String) {
+    contacts(name: $name) {
+      letter
+      entries {
+        name
+        phone
+      }
     }
   }
 `;

@@ -1,7 +1,7 @@
 import { FormControl, TextField, Button, Stack } from '@mui/material';
 import Search from '@mui/icons-material/Search';
 
-export function SearchBar() {
+export function SearchBar({ searchQuery, onChange }) {
   return (
     <FormControl fullWidth>
       <Stack direction="row">
@@ -10,7 +10,9 @@ export function SearchBar() {
             '& .MuiInputBase-root': { borderRadius: '4px 0px 0px 4px' },
             '& .MuiOutlinedInput-notchedOutline': { borderRight: '0px' },
           }}
+          value={searchQuery}
           placeholder="Einen Namen eingeben, z.B. George Costanza"
+          onChange={onChange}
           fullWidth
         />
         <Button

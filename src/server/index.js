@@ -1,29 +1,7 @@
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
-import { readFile } from 'node:fs/promises';
-
-const fileUrl = new URL('./telefonbuch.json', import.meta.url);
-const phoneBook = JSON.parse(await readFile(fileUrl, 'utf8'));
-
-const typeDefs = `#graphql
-  type PhoneBook {
-    name: String
-    phone: String
-  }
-
-  type Query {
-    contacts: [PhoneBook]
-  }
-`;
-
-const contactResolver = () =>
-  [...phoneBook].sort((a, b) => a.name.localeCompare(b.name));
-
-const resolvers = {
-  Query: {
-    contacts: contactResolver,
-  },
-};
+import { typeDefs } from './schema.js';
+import { resolvers } from './resolvers.js';
 
 const server = new ApolloServer({
   typeDefs,

@@ -1,0 +1,1 @@
+export { ContactGroup } from './ContactGroup';

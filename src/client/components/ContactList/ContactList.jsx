@@ -1,13 +1,18 @@
 import { Box, Divider } from '@mui/material';
 import { ContactItem } from '../ContactItem';
+import { Fragment } from 'react';
 
-export function ContactList({ contacts }) {
-  return contacts.map((data, index) => (
+export function ContactList({ entries }) {
+  return (
     <>
-      <Box key={index} disableGutters sx={{ marginY: '20px' }}>
-        <ContactItem data={data} />
-      </Box>
-      <Divider />
+      {entries.map((data) => (
+        <Fragment key={`${data.name}-${data.phone}`}>
+          <Box sx={{ marginY: '20px' }}>
+            <ContactItem data={data} />
+          </Box>
+          <Divider />
+        </Fragment>
+      ))}
     </>
-  ));
+  );
 }
