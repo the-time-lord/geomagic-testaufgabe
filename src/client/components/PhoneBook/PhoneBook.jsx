@@ -1,6 +1,6 @@
 import { SearchBar } from '../SearchBar';
 import { ContactList } from '../ContactList';
-import { Container } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import { useQuery } from '@apollo/client';
 import { GET_CONTACTS } from '../../graphql/queries';
 
@@ -11,9 +11,14 @@ export function PhoneBook() {
 
   if (error) return <p>Error : {error.message}</p>;
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" sx={{ marginY: '60px' }}>
+      <Typography variant="h3" sx={{ marginBottom: '40px' }}>
+        Telefonbuch
+      </Typography>
       <SearchBar />
-      <ContactList contacts={data.contacts} />
+      <Box sx={{ paddingY: '20px' }}>
+        <ContactList contacts={data.contacts} />
+      </Box>
     </Container>
   );
 }
