@@ -10,6 +10,7 @@ export function SearchBar() {
             '& .MuiInputBase-root': { borderRadius: '4px 0px 0px 4px' },
             '& .MuiOutlinedInput-notchedOutline': { borderRight: '0px' },
           }}
+          placeholder="Einen Namen eingeben, z.B. George Costanza"
           fullWidth
         />
         <Button
