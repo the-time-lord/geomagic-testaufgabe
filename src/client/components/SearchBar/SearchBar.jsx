@@ -1,4 +1,4 @@
-import { FormControl, TextField, Button, Stack } from '@mui/material';
+import { FormControl, TextField, InputAdornment, Stack } from '@mui/material';
 import Search from '@mui/icons-material/Search';
 
 export function SearchBar({ searchQuery, onChange }) {
@@ -7,24 +7,20 @@ export function SearchBar({ searchQuery, onChange }) {
       <Stack direction="row">
         <TextField
           sx={{
-            '& .MuiInputBase-root': { borderRadius: '4px 0px 0px 4px' },
-            '& .MuiOutlinedInput-notchedOutline': { borderRight: '0px' },
+            '& .MuiInputBase-root': { borderRadius: '100px' },
           }}
           value={searchQuery}
           placeholder="Einen Namen eingeben, z.B. George Costanza"
           onChange={onChange}
           fullWidth
-        />
-        <Button
-          variant="contained"
-          size="large"
-          startIcon={<Search />}
-          sx={{
-            borderRadius: '0px 4px 4px 0px',
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <Search />
+              </InputAdornment>
+            ),
           }}
-        >
-          Suchen
-        </Button>
+        />
       </Stack>
     </FormControl>
   );
