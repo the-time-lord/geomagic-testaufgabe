@@ -1,5 +1,5 @@
 import { readFile } from 'node:fs/promises';
-import { hasMatchingName } from './utills/index.js';
+import { hasMatchingName } from './utils/index.js';
 import groupBy from 'lodash/groupBy.js';
 
 const fileUrl = new URL('./telefonbuch.json', import.meta.url);
@@ -16,10 +16,13 @@ export const resolvers = {
         c.name.charAt(0).toUpperCase()
       );
 
-      return Object.entries(groupedResults).map(([letter, entries]) => ({
-        letter,
-        entries,
-      }));
+      return {
+        results: Object.entries(groupedResults).map(([letter, entries]) => ({
+          letter,
+          entries,
+        })),
+        total: sortedResults.length,
+      };
     },
   },
 };

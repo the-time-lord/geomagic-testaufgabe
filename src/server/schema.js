@@ -9,7 +9,12 @@ export const typeDefs = `#graphql
     entries: [PhoneBookEntry]
   }
 
+  type ContactsQueryResponse {
+    results: [PhoneBookGroup]
+    total: Int
+  }
+
   type Query {
-    contacts(name: String): [PhoneBookGroup]
+    contacts(name: String): ContactsQueryResponse
   }
 `;
