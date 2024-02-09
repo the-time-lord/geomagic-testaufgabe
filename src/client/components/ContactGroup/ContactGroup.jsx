@@ -1,7 +1,10 @@
 import { Box, Divider, Typography } from '@mui/material';
 import { ContactList } from '../ContactList';
+import { Loading } from '../Loading';
 
-export function ContactGroup({ contacts }) {
+export function ContactGroup({ contacts, loading }) {
+  if (loading) return <Loading />;
+
   return (
     <>
       {contacts.map(({ letter, entries }) => (

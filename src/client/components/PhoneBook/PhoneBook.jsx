@@ -19,17 +19,13 @@ export function PhoneBook() {
   const onSearchQueryChange = (e) => setSearchQuery(e.target.value);
 
   return (
-    <Container maxWidth="sm" sx={{ marginY: '60px' }}>
-      <Typography variant="h3" sx={{ marginBottom: '40px' }}>
+    <Container maxWidth="sm">
+      <Typography variant="h3" sx={{ marginTop: '60px', marginBottom: '40px' }}>
         Telefonbuch
       </Typography>
       <SearchBar searchQuery={searchQuery} onChange={onSearchQueryChange} />
       <Box sx={{ paddingY: '20px' }}>
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
-          <ContactGroup contacts={data.contacts} />
-        )}
+        <ContactGroup contacts={data?.contacts} loading={loading} />
       </Box>
     </Container>
   );
